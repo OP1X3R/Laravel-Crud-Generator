@@ -1,10 +1,9 @@
 {
     "name": "jlcrud/crud-generator",
     "description": "A crud generator for Laravel.",
-    "type": "project",
     "autoload": {
         "psr-4": {
-            "jlcrud\\crud-generator\\": "src/"
+            "jlcrud\\CrudGenerator\\": "src/"
         }
     },
     "authors": [
@@ -17,7 +16,7 @@
 		"laravel": {
 			"providers":
 			[
-				"jlcrud\\crud-generator\\crudGeneratorServiceProvider"
+				"jlcrud\\CrudGenerator\\crudGeneratorServiceProvider"
 			]
 		}
 	},
