@@ -1,0 +1,32 @@
+@extends('crud.layout')
+@section('content')
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold">Edit {{modelName}}</h6>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{viewPath}}/{{modelNameLowercase}}/{{${{modelName}}->id}}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            {{editGroupRows}}
+                            <div class="pull-right">
+                              <a href="{{viewPath}}/{{modelNameLowercase}}" type="button" class="btn btn-danger"><i class="fa fa-arrow-left"></i></a>
+                              <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            {{javaCode}}
+        });
+    </script>
+@endsection

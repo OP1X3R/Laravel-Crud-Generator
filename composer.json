@@ -1,0 +1,29 @@
+{
+    "name": "jlcrud/CrudGenerator",
+    "description": "A crud generator for Laravel.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "jlcrud\\CrudGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Justas Luciunas",
+            "email": "justas.luciunas@gmail.com"
+        }
+    ],
+	"extra": {
+		"laravel": {
+			"providers":
+			[
+				"jlcrud\\CrudGenerator\\crudGeneratorServiceProvider"
+			]
+		}
+	},
+    "minimum-stability": "dev",
+    "require": {
+		"ext-json" : "*"
+	}
+}
+

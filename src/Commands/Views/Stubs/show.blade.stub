@@ -1,0 +1,21 @@
+@extends('crud.layout')
+@section('content')
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold">{{modelName}}</h6>
+                    </div>
+                    <div class="card-body">
+                        {{cardBody}}
+                        <div class="pull-right">
+                           <a href="{{viewPath}}/{{modelNameLowercase}}" type="button" class="btn btn-danger"><i class="fa fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

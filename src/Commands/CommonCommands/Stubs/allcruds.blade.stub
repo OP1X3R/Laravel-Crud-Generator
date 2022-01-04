@@ -1,0 +1,42 @@
+@extends('crud.layout')
+@section('content')
+{{injects}}
+    <style>
+
+        h4 {
+            margin: 2rem 0rem 1rem;
+        }
+
+        .table-image td,
+        .table-image th {
+            vertical-align: middle;
+        }
+		tr > * {
+			text-align:center;
+		}
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Crud Name</th>
+						<th scope="col">Count</th>
+                        <th scope="col">Link</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {{crudshtml}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $(function(){
+    });
+</script>
+
+@endsection

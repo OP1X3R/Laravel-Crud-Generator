@@ -1,0 +1,126 @@
+<?php
+
+namespace App\Http\Controllers{{namespaceprefix}};
+
+use Illuminate\Http\Requests;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\{{modelName}};
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Session;
+
+class DummyClass extends Controller
+{
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        ${{crudName}} = {{modelName}}::simplePaginate(10);
+
+        return view('crud{{viewPath}}.index_{{crudName}}', compact('{{crudName}}'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('crud{{viewPath}}.create_{{crudName}}');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        if(Auth::user()->isAdmin == 0) return redirect()->route('{{crudNameLowercase}}.index')->with('fail','No permission to create.');
+        {{validationRules}}
+        {{modelName}}::create($request->all());
+
+        Session::flash('message', '{{modelName}} added!');
+        Session::flash('status', 'success');
+
+        return redirect()->route('{{crudNameLowercase}}.index')->with('success','Successfully added a new {{modelName}}.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+    if(Auth::guest()) return redirect()->route('{{crudNameLowercase}}.index')->with('fail','No permission to view this item as a guest.');
+        ${{crudName}} = {{modelName}}::findOrFail($id);
+
+        return view('crud{{viewPath}}.show_{{crudName}}', compact('{{crudName}}'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        ${{crudName}} = {{modelName}}::findOrFail($id);
+
+        return view('crud{{viewPath}}.edit_{{crudName}}', compact('{{crudName}}'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     *
+     * @return Response
+     */
+    public function update($id, Request $request)
+    {
+        if(Auth::user()->isAdmin == 0) redirect()->route('{{crudNameLowercase}}.index')->with('fail','No permission to update.');
+        {{validationRules}}
+        ${{crudName}} = {{modelName}}::findOrFail($id);
+        ${{crudName}}->update($request->all());
+
+        Session::flash('message', '{{modelName}} updated!');
+        Session::flash('status', 'success');
+
+        return redirect()->route('{{crudNameLowercase}}.index')->with('success','Successfully updated.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        if(Auth::user()->isAdmin == 0) redirect()->route('{{crudNameLowercase}}.index')->with('fail','No permission to delete.');
+        ${{crudName}} = {{modelName}}::findOrFail($id);
+
+        ${{crudName}}->delete();
+
+        Session::flash('message', '{{modelName}} deleted!');
+        Session::flash('status', 'success');
+
+        return redirect()->route('{{crudNameLowercase}}.index')->with('success','Successfully deleted the {{modelName}}.');
+    }
+
+}

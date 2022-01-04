@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\user;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
+
+class LoginController extends Controller
+{
+
+	public function index()
+	{
+		return view("crud/login");
+	}
+
+	public function cruds()
+	{
+		return view("crud/allcruds");
+	}
+
+	public function register_index()
+	{
+		return view("crud/register");
+	}
+
+
+	public function login(Request $request)
+    {
+        $this->validate($request, [
+            'login' => 'required',
+            'password' => 'required',
+        ]);
+
+		$user = User::where('name', $request->get('login'))->first();
+
+		if (is_null($user)) {
+				return back()->with('fail','Username not found!');
+		}
+		if(Hash::check($request->get('password'), $user->password))
+		{
+
+			Auth::login($user, true);
+		}
+		else
+		{
+			return back()->with('fail','Failed to login!');
+		}
+		return view('crud.allcruds');
+    }
+
+	public function register(Request $request)
+    {
+        $this->validate($request, [
+            'login' => 'required',
+            'password' => 'required',
+			'repeatPassword' => 'required'
+        ]);
+
+		$user = User::where('name', $request->get('login'))->first();
+
+		if (!is_null($user)) {
+				return back()->with('fail','This username is already taken!');
+		}
+		User::create([
+				'name' => $request->get('login'),
+				'password' => bcrypt($request->get('password'))
+			]);
+		return redirect()->route('login')->with('success','User created, please login.');
+    }
+
+	public function logout()
+    {
+		Auth::logout();
+        return view('crud.allcruds');
+    }
+}
