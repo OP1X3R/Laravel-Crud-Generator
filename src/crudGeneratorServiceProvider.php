@@ -14,11 +14,11 @@ class crudGeneratorServiceProvider extends ServiceProvider
     public function register()
     {
         $commands =
-            ['jlcrud\crud-generator\Commands\Views\createCreateViewCommand',
-             'jlcrud\crud-generator\Commands\Models\createModelCommand',
-             'jlcrud\crud-generator\Commands\Controllers\createControllerCommand',
-             'jlcrud\crud-generator\Commands\Migrations\createMigrationCommand',
-             'jlcrud\crud-generator\Commands\CommonCommands\crudCommand'];
+            ['jlcrud\CrudGenerator\Commands\Views\createCreateViewCommand',
+             'jlcrud\CrudGenerator\Commands\Models\createModelCommand',
+             'jlcrud\CrudGenerator\Commands\Controllers\createControllerCommand',
+             'jlcrud\CrudGenerator\Commands\Migrations\createMigrationCommand',
+             'jlcrud\CrudGenerator\Commands\CommonCommands\crudCommand'];
         $this->commands($commands);
     }
 
