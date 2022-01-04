@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Justas\\Crudgenerator\\' => array($baseDir . '/src'),
+    'Justas\\crud-generator\\' => array($baseDir . '/src'),
 );

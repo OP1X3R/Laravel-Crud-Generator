@@ -9,12 +9,12 @@ class ComposerStaticInitf84b371d54bb52feb42bf24f4e0bcf2a
     public static $prefixLengthsPsr4 = array (
         'J' => 
         array (
-            'jlcrud\\Crudgenerator\\' => 21,
+            'jlcrud\\crud-generator\\' => 21,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'jlcrud\\Crudgenerator\\' => 
+        'jlcrud\\crud-generator\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
