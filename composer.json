@@ -1,5 +1,5 @@
 {
-    "name": "jlcrud/CrudGenerator",
+    "name": "jlcrud/crud-generator",
     "description": "A crud generator for Laravel.",
     "type": "project",
     "autoload": {
