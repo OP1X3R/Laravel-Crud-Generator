@@ -238,7 +238,7 @@ class crudCommand extends Command
     protected function getLoginControllerPath($name)
     {
         $path = app_path();
-        $path = $path . $name . "Controller.php";
+        $path = $path . "/Http/Controllers/" . $name . "Controller.php";
         return $path;
     }
 
