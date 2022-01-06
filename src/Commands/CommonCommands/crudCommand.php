@@ -42,8 +42,7 @@ class crudCommand extends Command
 
     protected function getControllerPath($name, $controllerNamespace)
     {
-        $path = 'App\Http\Controllers\\';
-        $path = ($controllerNamespace != '') ? $path . $controllerNamespace . '\\' . $name . 'Controller' : $path . $name . 'Controller';
+        $path = ($controllerNamespace != '') ? $controllerNamespace . '\\' . $name . 'Controller' : $name . 'Controller';
         return $path;
     }
 
@@ -86,8 +85,8 @@ class crudCommand extends Command
         $loginCreated = 0;
         if(!File::exists($loginControllerPath)) { //Creating login.
             $loginCreated = 1;
-            if($inputData->prefix != '') $loginController = "App\Http\Controllers\LoginController";
-            else $loginController = "App\Http\Controllers\LoginController";
+            if($inputData->prefix != '') $loginController = $inputData->prefix . "\LoginController";
+            else $loginController = "LoginController";
             $loginStub = $this->getFileContent($this->getControllerStub("LoginController.stub"));
             $this->replaceNameSpacePrefix($loginStub, $inputData->prefix);
             $this->createFile($loginControllerPath, $loginStub);
@@ -239,7 +238,7 @@ class crudCommand extends Command
     protected function getLoginControllerPath($name)
     {
         $path = app_path();
-        $path = $path . "/Http/Controllers/" . $name . "Controller.php";
+        $path = $path . $name . "Controller.php";
         return $path;
     }
 
