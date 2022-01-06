@@ -24,7 +24,7 @@ class DummyClass extends Controller
     {
         ${{crudName}} = {{modelName}}::simplePaginate(10);
 
-        return view('crud{{viewPath}}.index_{{crudName}}', compact('{{crudName}}'));
+        return view('crud{{viewPath}}.index_{{crudNameLowercase}}', compact('{{crudName}}'));
     }
 
     /**
@@ -34,7 +34,7 @@ class DummyClass extends Controller
      */
     public function create()
     {
-        return view('crud{{viewPath}}.create_{{crudName}}');
+        return view('crud{{viewPath}}.create_{{crudNameLowercase}}');
     }
 
     /**
@@ -66,7 +66,7 @@ class DummyClass extends Controller
     if(Auth::guest()) return redirect()->route('{{crudNameLowercase}}.index')->with('fail','No permission to view this item as a guest.');
         ${{crudName}} = {{modelName}}::findOrFail($id);
 
-        return view('crud{{viewPath}}.show_{{crudName}}', compact('{{crudName}}'));
+        return view('crud{{viewPath}}.show_{{crudNameLowercase}}', compact('{{crudName}}'));
     }
 
     /**
@@ -80,7 +80,7 @@ class DummyClass extends Controller
     {
         ${{crudName}} = {{modelName}}::findOrFail($id);
 
-        return view('crud{{viewPath}}.edit_{{crudName}}', compact('{{crudName}}'));
+        return view('crud{{viewPath}}.edit_{{crudNameLowercase}}', compact('{{crudName}}'));
     }
 
     /**
