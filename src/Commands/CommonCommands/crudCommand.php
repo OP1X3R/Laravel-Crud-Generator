@@ -97,7 +97,6 @@ class crudCommand extends Command
             $this->createFile($loginViewPath, $loginViewStub);
 
             $modelPath = $this->getModelPath("User");
-            $this->info($modelPath);
             $modelStub = $this->getFileContent($this->getStub("user"));
             $this->createFile($modelPath, $modelStub);
 
