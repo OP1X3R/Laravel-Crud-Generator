@@ -89,7 +89,7 @@ class createModelCommand extends GeneratorCommand
     protected function getPath($name)
     {
         $path = app_path();
-        $path = $path . $name . ".php";
+        $path = $path . '/' . $name . ".php";
         return $path;
     }
 

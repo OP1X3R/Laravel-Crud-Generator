@@ -255,7 +255,7 @@ class crudCommand extends Command
     protected function getModelPath($name)
     {
         $path = app_path();
-        $path = $path . $name . ".php";
+        $path = $path . "/" . $name . ".php";
         return $path;
     }
 
