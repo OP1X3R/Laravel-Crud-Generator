@@ -89,7 +89,7 @@ class createModelCommand extends GeneratorCommand
     protected function getPath($name)
     {
         $path = app_path();
-        $path = $path . "/Models/" . $name . ".php";
+        $path = $path . $name . ".php";
         return $path;
     }
 
@@ -133,7 +133,7 @@ class createModelCommand extends GeneratorCommand
     {
         $this->relationshipText .= "\npublic function " . $name . "_" . $relationship[0] . "()" .
             "{
-            return \$this->". $relationship[0] . "('App\Models\\" . $relationship[1] ."', '" . $relationship[2] . "', '" . $relationship[3] . "');
+            return \$this->". $relationship[0] . "('App\\" . $relationship[1] ."', '" . $relationship[2] . "', '" . $relationship[3] . "');
          }\n";
     }
 }

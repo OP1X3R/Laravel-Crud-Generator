@@ -151,7 +151,7 @@ class crudCommand extends Command
         $x = 1;
         foreach($allModels as $model)
         {
-            $this->allCrudInjectHTML .= "@inject('" . $model . "', 'App\Models\\" . $model ."')\n";
+            $this->allCrudInjectHTML .= "@inject('" . $model . "', 'App\\" . $model ."')\n";
             $this->allCrudsHTML .= "<tr><th scope=\"row\">" . $x . "</th>
                         <td>" . $model . "</td>
 						<td>{{ $" . $model . "->count() }}</td>
@@ -255,7 +255,7 @@ class crudCommand extends Command
     protected function getModelPath($name)
     {
         $path = app_path();
-        $path = $path . "/Models/" . $name . ".php";
+        $path = $path . $name . ".php";
         return $path;
     }
 
