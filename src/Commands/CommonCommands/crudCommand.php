@@ -68,7 +68,7 @@ class crudCommand extends Command
         {
             $fillableArray[] = preg_replace("/(.*?):(.*)/", "$1", trim($field));
         }
-        $viewsDestination = base_path('resources\views\crud\\');
+        $viewsDestination = base_path('resources/views/crud/');
 
         $crudModelsPath = $viewsDestination . "models.json"; //a file with with all cruds in it. [JSON]
 
@@ -92,7 +92,7 @@ class crudCommand extends Command
             $this->replaceNameSpacePrefix($loginStub, $inputData->prefix);
             $this->createFile($loginControllerPath, $loginStub);
 
-            $loginViewPath = $viewsDestination . "\login.blade.php";
+            $loginViewPath = $viewsDestination . "/login.blade.php";
             $loginViewStub = $this->getFileContent($this->getStub("login"));
             $this->createFile($loginViewPath, $loginViewStub);
 
@@ -101,7 +101,7 @@ class crudCommand extends Command
             $modelStub = $this->getFileContent($this->getStub("user"));
             $this->createFile($modelPath, $modelStub);
 
-            $registerViewPath = $viewsDestination . "\\register.blade.php";
+            $registerViewPath = $viewsDestination . "/register.blade.php";
             $registerViewStub = $this->getFileContent($this->getStub("register"));
             $this->createFile($registerViewPath, $registerViewStub);
             $this->call('create:migration', ['name' => 'jlCrudUsers', '--schema' => "name:string, password:text, remember_token:text, isAdmin:boolean", '--create-users' => 'yes']);
@@ -240,7 +240,7 @@ class crudCommand extends Command
     protected function getLoginControllerPath($name)
     {
         $path = app_path();
-        $path = $path . "\Http\Controllers\\" . $name . "Controller.php";
+        $path = $path . "/Http/Controllers/" . $name . "Controller.php";
         return $path;
     }
 
@@ -257,18 +257,18 @@ class crudCommand extends Command
     protected function getModelPath($name)
     {
         $path = app_path();
-        $path = $path . "\Models\\" . $name . ".php";
+        $path = $path . "/Models/" . $name . ".php";
         return $path;
     }
 
     protected function getStub($name)
     {
-        return __DIR__ . '\Stubs\\' . $name . '.blade.stub';
+        return __DIR__ . '/Stubs/' . $name . '.blade.stub';
     }
 
     protected function getControllerStub($name)
     {
-        return __DIR__ . '\Stubs\\' . $name;
+        return __DIR__ . '/Stubs/' . $name;
     }
 
 }

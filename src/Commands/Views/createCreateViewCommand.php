@@ -101,14 +101,14 @@ class createCreateViewCommand extends CommonBase
             $this->addJquery($field);
         }
 
-        $destination = base_path('resources\views\crud\\');
+        $destination = base_path('resources/views/crud/');
 
         $layoutpath = $destination . "layout.blade.php";
         $layoutstub = $this->getFileContent($this->getStub("layout"));
 
         $this->createFile($layoutpath, $layoutstub); //createFile will not create if already exists, so no need to check here.
 
-        if ($this->option('view-path')) $destination =  $destination . '\\' . $this->option('view-path') . '\\';
+        if ($this->option('view-path')) $destination =  $destination . '/' . $this->option('view-path') . '/';
 
         $createpath = $destination . "create_" . $inputData->viewName . ".blade.php";
         $createstub = $this->getFileContent($this->getStub("create"));
@@ -232,13 +232,13 @@ class createCreateViewCommand extends CommonBase
     protected function getPath($name)
     {
         $path = app_path();
-        $path = $path . '\Views\\' . $name . '.php';
+        $path = $path . '/Views/' . $name . '.php';
         return $path;
     }
 
     protected function getStub($name)
     {
-        return __DIR__ . '\Stubs\\' . $name . '.blade.stub';
+        return __DIR__ . '/Stubs/' . $name . '.blade.stub';
     }
 
     protected function replaceModelName(&$stub, $modelName)

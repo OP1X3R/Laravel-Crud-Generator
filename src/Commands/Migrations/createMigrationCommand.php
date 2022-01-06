@@ -32,7 +32,7 @@ class createMigrationCommand extends GeneratorCommand
 
     protected function getStub()
     {
-        return __DIR__ . '\Stubs\migration.stub';
+        return __DIR__ . '/Stubs/migration.stub';
     }
 
     protected function getPath($name)

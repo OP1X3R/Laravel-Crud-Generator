@@ -30,7 +30,7 @@ class createControllerCommand extends GeneratorCommand
 
     protected function getStub()
     {
-        return __DIR__ . '\Stubs\controller.stub';
+        return __DIR__ . '/Stubs/controller.stub';
     }
 
     protected function replaceCrudName(&$stub, $crudName)
@@ -93,8 +93,8 @@ class createControllerCommand extends GeneratorCommand
     protected function getPath($name, $prefix = '')
     {
         $path = app_path();
-        if($prefix != '') $path = $path . "\Http\Controllers\\" . $prefix . '\\' . $name . "Controller.php";
-        else $path = $path . "\Http\Controllers\\" . $name . "Controller.php";
+        if($prefix != '') $path = $path . "/Http/Controllers/" . $prefix . '/' . $name . "Controller.php";
+        else $path = $path . "/Http/Controllers/" . $name . "Controller.php";
         return $path;
     }
 
@@ -138,7 +138,7 @@ class createControllerCommand extends GeneratorCommand
         $reqFields = trim($this->option('required-fields'));
         $viewPath = trim($this->option('view-path'));
         $namespacePrefix = trim($this->option('prefix'));
-        $prefix = trim($this->option('prefix') ? $this->option('prefix').'\\' : '');
+        $prefix = trim($this->option('prefix') ? $this->option('prefix') : '');
         $crudName = trim($this->option('crud-name'));
 
         return (object) compact(

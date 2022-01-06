@@ -38,7 +38,7 @@ class createModelCommand extends GeneratorCommand
 
     protected function getStub()
     {
-        return __DIR__ . '\Stubs\model.stub';
+        return __DIR__ . '/Stubs/model.stub';
     }
 
 
@@ -48,7 +48,6 @@ class createModelCommand extends GeneratorCommand
 
         $destination = $this->getPath($inputData->modelName);
 
-        //$this->info($destination); C:\xampp\htdocs\laravel\app\Models\testModel.php
 
         if($this->alreadyExists($destination)) return false;
 
@@ -90,7 +89,7 @@ class createModelCommand extends GeneratorCommand
     protected function getPath($name)
     {
         $path = app_path();
-        $path = $path . "\Models\\" . $name . ".php";
+        $path = $path . "/Models/" . $name . ".php";
         return $path;
     }
 
@@ -133,7 +132,7 @@ class createModelCommand extends GeneratorCommand
     protected function makeRelationshipText($relationship,$name)
     {
         $this->relationshipText .= "\npublic function " . $name . "_" . $relationship[0] . "()" .
-        "{
+            "{
             return \$this->". $relationship[0] . "('App\Models\\" . $relationship[1] ."', '" . $relationship[2] . "', '" . $relationship[3] . "');
          }\n";
     }
