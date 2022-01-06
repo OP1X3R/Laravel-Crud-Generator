@@ -151,7 +151,13 @@ class createCreateViewCommand extends CommonBase
     {
         $this->createShowCardBody($inputData);
         File::put($showpath, str_replace('{{modelName}}', $inputData->crudName, File::get($showpath)));
-        File::put($showpath, str_replace('{{viewPath}}', "/" . $inputData->viewPath, File::get($showpath)));
+        if($inputData->viewPath != "") {
+            File::put($showpath, str_replace('{{viewPath}}', "/" . $inputData->viewPath, File::get($showpath)));
+        }
+        else
+        {
+            File::put($showpath, str_replace('{{viewPath}}', $inputData->viewPath, File::get($showpath)));
+        }
         File::put($showpath, str_replace('{{modelNameLowercase}}', strtolower($inputData->crudName), File::get($showpath)));
         File::put($showpath, str_replace('{{cardBody}}', $this->cardBodyText, File::get($showpath)));
     }
@@ -159,7 +165,13 @@ class createCreateViewCommand extends CommonBase
     public function changeCreateVariables($createPath, $inputData)
     {
         File::put($createPath, str_replace('{{modelName}}', $inputData->crudName, File::get($createPath)));
-        File::put($createPath, str_replace('{{viewPath}}', "/" . $inputData->viewPath, File::get($createPath)));
+        if($inputData->viewPath != "") {
+            File::put($createPath, str_replace('{{viewPath}}', "/" . $inputData->viewPath, File::get($createPath)));
+        }
+        else
+        {
+            File::put($createPath, str_replace('{{viewPath}}', $inputData->viewPath, File::get($createPath)));
+        }
         File::put($createPath, str_replace('{{formGroupRows}}', $this->formGroupRowsText, File::get($createPath)));
         File::put($createPath, str_replace('{{modelNameLowercase}}', strtolower($inputData->crudName), File::get($createPath)));
         File::put($createPath, str_replace('{{javaCode}}', $this->jqueryText, File::get($createPath)));
@@ -168,7 +180,13 @@ class createCreateViewCommand extends CommonBase
     public function changeEditVariables($editpath, $inputData)
     {
         File::put($editpath, str_replace('{{modelName}}', $inputData->crudName, File::get($editpath)));
-        File::put($editpath, str_replace('{{viewPath}}', "/" . $inputData->viewPath, File::get($editpath)));
+        if($inputData->viewPath != "") {
+            File::put($editpath, str_replace('{{viewPath}}', "/" . $inputData->viewPath, File::get($editpath)));
+        }
+        else
+        {
+            File::put($editpath, str_replace('{{viewPath}}', $inputData->viewPath, File::get($editpath)));
+        }
         File::put($editpath, str_replace('{{editGroupRows}}', $this->editFormGroupRowsText, File::get($editpath)));
         File::put($editpath, str_replace('{{modelNameLowercase}}', strtolower($inputData->crudName), File::get($editpath)));
         File::put($editpath, str_replace('{{javaCode}}', $this->jqueryText, File::get($editpath)));
